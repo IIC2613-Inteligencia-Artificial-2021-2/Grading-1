@@ -8,6 +8,11 @@
     #+begin_src sh
       ./collect_grades.py assignments/tarea-1-2021-2-*
     #+end_src
+*** View scores
+    #+begin_src sh
+      jq '.[] | {user: .github_user, score: .total_score}' full_report.json
+      # jq '.[] | {user: .github_user, score: .total_score, scores: .scores}' full_report.json
+    #+end_src
 
 ** Single assignment
 *** Run tests
