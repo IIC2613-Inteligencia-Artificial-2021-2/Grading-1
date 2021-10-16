@@ -106,7 +106,7 @@ def main(argv):
             full_report[github_user] = report
             with open("report.json", "w") as json_file:
                 json.dump(report, json_file)
-                print("Wrote `report.json`")
+                print("Wrote `report.json` for ", github_user)
 
     with open("full_report.json", "w") as json_file:
         json.dump(full_report, json_file)
