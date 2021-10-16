@@ -8,7 +8,6 @@ import re
 from collections import ChainMap
 from decimal import Decimal
 from pathlib import Path
-from pprint import pprint
 
 
 @contextlib.contextmanager
@@ -105,7 +104,6 @@ def main(argv):
         with pushd(assignment_path):
             report = grade(github_user)
             full_report[github_user] = report
-            pprint(report)
             with open("report.json", "w") as json_file:
                 json.dump(report, json_file)
                 print("Wrote `report.json`")
