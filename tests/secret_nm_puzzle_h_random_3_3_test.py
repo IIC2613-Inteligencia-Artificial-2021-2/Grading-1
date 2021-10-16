@@ -8,8 +8,11 @@ import copy
 import random
 
 import numpy as np
-from search.problems.nm_puzzle import (NMPuzzle, NMPuzzleManhattanDistance,
-                                       NMPuzzleProblem)
+from search.problems.nm_puzzle import (
+    NMPuzzle,
+    NMPuzzleManhattanDistance,
+    NMPuzzleProblem,
+)
 
 
 def build_goal_state(height: int, width: int) -> NMPuzzle.State:
@@ -26,8 +29,7 @@ def build_goal_state(height: int, width: int) -> NMPuzzle.State:
 
 
 def test_heuristic_random_bound():
-    """Create a small instance and ask for
-    """
+    """Create a small instance and ask for"""
     attempts = 30
     max_steps = 10
     for attempt in range(attempts):
@@ -39,13 +41,18 @@ def test_heuristic_random_bound():
 
         state = copy.deepcopy(goal_state)
         for steps in range(max_steps):
-            problem = NMPuzzleProblem(space, set([copy.deepcopy(state)]), set([goal_state]))
+            problem = NMPuzzleProblem(
+                space, set([copy.deepcopy(state)]), set([goal_state])
+            )
             h = NMPuzzleManhattanDistance(problem)
 
             start = next(iter(problem.starting_states))
             # pylint: disable=invalid-name
             print(str(start))
-            assert h(start) <= steps, "This problem can be solved in %d steps: %s" % (steps, str(start))
+            assert h(start) <= steps, "This problem can be solved in %d steps: %s" % (
+                steps,
+                str(start),
+            )
             if start != goal_state:
                 assert h(start) > 0, "This problem requires some steps: %s" % str(start)
 

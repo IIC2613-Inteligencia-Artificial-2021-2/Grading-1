@@ -1,5 +1,7 @@
-from search.problems.grid.sokoban import (SokobanMetaProblem,
-                                          SokobanSimpleManhattanActionDistance)
+from search.problems.grid.sokoban import (
+    SokobanMetaProblem,
+    SokobanSimpleManhattanActionDistance,
+)
 from search.space import Problem
 
 INFINITY = float("inf")

@@ -25,10 +25,10 @@ def test_tie_breaking():
 
     # pylint: disable=invalid-name
     f = 5
-    for g1 in range(f+1):
+    for g1 in range(f + 1):
         h1 = f - g1
         node_1 = AStar.AStarNode(state, action=None, parent=None, g=g1, h=h1)
-        for g2 in range(f+1):
+        for g2 in range(f + 1):
             h2 = f - g2
             node_2 = AStar.AStarNode(state, action=None, parent=None, g=g2, h=h2)
 

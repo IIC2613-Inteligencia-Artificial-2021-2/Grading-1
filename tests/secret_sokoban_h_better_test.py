@@ -1,22 +1,25 @@
-from search.problems.grid.sokoban import (Sokoban, SokobanBetterDistance,
-                                          SokobanMetaProblem, SokobanProblem,
-                                          SokobanSimpleManhattanActionDistance,
-                                          SokobanSimpleManhattanDistance)
+from search.problems.grid.sokoban import (
+    Sokoban,
+    SokobanBetterDistance,
+    SokobanMetaProblem,
+    SokobanProblem,
+    SokobanSimpleManhattanActionDistance,
+    SokobanSimpleManhattanDistance,
+)
 from search.space import Problem
 
 INFINITY = float("inf")
 
 HEURISTIC_CTORS = [
-            SokobanBetterDistance,
-            SokobanSimpleManhattanActionDistance,
-            SokobanSimpleManhattanDistance,
+    SokobanBetterDistance,
+    SokobanSimpleManhattanActionDistance,
+    SokobanSimpleManhattanDistance,
 ]
 
 
 def heuristics(problem: SokobanProblem, state: Sokoban.State):
     """Returns a map from heuristic name to its value for a given instance."""
     return {hc.__name__: hc(problem)(state) for hc in HEURISTIC_CTORS}
-
 
 
 def test_heuristic_no_goal():

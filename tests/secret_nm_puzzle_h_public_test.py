@@ -5,8 +5,7 @@ An implementation detail that could be surprising, is that the empty space uses
 the highest number instead of 0.
 """
 import numpy as np
-from search.problems.nm_puzzle import (NMPuzzleManhattanDistance,
-                                       NMPuzzleMetaProblem)
+from search.problems.nm_puzzle import NMPuzzleManhattanDistance, NMPuzzleMetaProblem
 
 
 def test_heuristic_single_tile_off():

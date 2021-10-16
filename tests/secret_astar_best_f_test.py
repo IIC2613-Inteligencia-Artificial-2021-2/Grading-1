@@ -6,8 +6,11 @@ from typing import Optional
 
 from search.algorithms.astar import AStar
 from search.algorithms.search import Node, SearchAlgorithm
-from search.problems.grid.board2d import (Grid2D, Grid2DManhattanDistance,
-                                          Grid2DMetaProblem)
+from search.problems.grid.board2d import (
+    Grid2D,
+    Grid2DManhattanDistance,
+    Grid2DMetaProblem,
+)
 from search.space import Problem
 
 
