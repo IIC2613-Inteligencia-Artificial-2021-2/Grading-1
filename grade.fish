@@ -18,8 +18,6 @@ function setup
     cp -f $t $argv/(basename $t)
   end
   rm -rf $argv'/test_results/'
-
-  git rev-parse > info_commit.txt
 end
 
 function grade_test
@@ -35,6 +33,8 @@ function grade_test
       set soft_deadline $argv[3]
   end
 
+  git rev-parse > info_commit.txt
+
   echo -n "      - Running $test_file ..."
   if timeout \
        --kill-after $hard_deadline \
@@ -47,14 +47,12 @@ function grade_test
     set_color normal
     touch "test_results/passed/$test_file"
     cp "test_results/logs/$test_file.log" "test_results/passed/"
-    return 0
   else
     set_color red
     echo "  Failed :("
     set_color normal
     touch "test_results/failed/$test_file"
     cp "test_results/logs/$test_file.log" "test_results/failed/"
-    return 1
   end
 end
 
@@ -73,11 +71,7 @@ function grade
 
   echo "    - Running tests"
   for t in secret_*_test.py
-    if grade_test $t
-      echo "passed"
-    else
-      echo "failed"
-    end
+    grade_test $t
   end
 
   echo "    - Writing fake grade"
