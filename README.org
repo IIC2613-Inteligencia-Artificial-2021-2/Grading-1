@@ -1,0 +1,20 @@
+* Grading
+** All assignments
+*** Run tests
+    #+begin_src sh
+      time find assignments/ -maxdepth '1' -type d | parallel ./grade.fish {}
+    #+end_src
+*** Score
+    #+begin_src sh
+      ./collect_grades.py assignments/tarea-1-2021-2-*
+    #+end_src
+
+** Single assignment
+*** Run tests
+    #+begin_src sh
+      time ./grade.fish assignments/tarea-1-2021-2-GITHUB_USER
+    #+end_src
+*** Score
+    #+begin_src sh
+      ./collect_grades.py assignments/tarea-1-2021-2-GITHUB_USER
+    #+end_src

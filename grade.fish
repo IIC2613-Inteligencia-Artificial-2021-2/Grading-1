@@ -18,6 +18,8 @@ function setup
     cp -f $t $argv/(basename $t)
   end
   rm -rf $argv'/test_results/'
+
+  git rev-parse > info_commit.txt
 end
 
 function grade_test
@@ -45,12 +47,14 @@ function grade_test
     set_color normal
     touch "test_results/passed/$test_file"
     cp "test_results/logs/$test_file.log" "test_results/passed/"
+    return 0
   else
     set_color red
     echo "  Failed :("
     set_color normal
     touch "test_results/failed/$test_file"
     cp "test_results/logs/$test_file.log" "test_results/failed/"
+    return 1
   end
 end
 
@@ -69,7 +73,11 @@ function grade
 
   echo "    - Running tests"
   for t in secret_*_test.py
-    grade_test $t
+    if grade_test $t
+      echo "passed"
+    else
+      echo "failed"
+    end
   end
 
   echo "    - Writing fake grade"
