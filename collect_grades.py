@@ -69,6 +69,12 @@ def grade(github_user):
     passed_tests = sorted([p.name for p in Path("test_results/passed").rglob("*.py")])
     failed_tests = sorted([p.name for p in Path("test_results/failed").rglob("*.py")])
 
+    if "secret_iddfs_public_nosol_test.py" in passed_tests and "secret_iddfs_public_alt_nosol_test.py" in passed_tests:
+        passed_tests.remove("secret_iddfs_public_alt_nosol_test.py")
+
+    if "secret_iddfs_public_test.py" in passed_tests and "secret_iddfs_public_alt_test.py" in passed_tests:
+        passed_tests.remove("secret_iddfs_public_alt_test.py")
+
     # Python3.8 does not support Union (operator |)
     scores = {t: str(Decimal(0.0)) for t in failed_tests}
     for passed_test in passed_tests:
