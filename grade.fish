@@ -73,9 +73,6 @@ function grade
   for t in secret_*_test.py
     grade_test $t
   end
-
-  echo "    - Writing fake grade"
-  touch grade.json
 end
 
 
