@@ -10,7 +10,7 @@ INFINITY = float("inf")
 def test_manhattan_walk_multiple_boxes():
     metaproblem = SokobanMetaProblem(
         [
-            # This is impossible, but it should look like it needs 3+1 actions.
+            # This is impossible, but it should look like it needs 3+2 actions.
             "S GB",
             "  GB",
             "  GB",
@@ -21,7 +21,7 @@ def test_manhattan_walk_multiple_boxes():
 
     # pylint: disable=invalid-name
     h = SokobanSimpleManhattanActionDistance(problem)
-    assert h(start) == 4
+    assert h(start) == 5
 
 
 def test_manhattan_walk_multiple_boxes_2():
